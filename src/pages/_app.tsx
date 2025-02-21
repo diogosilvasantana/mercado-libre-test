@@ -1,10 +1,13 @@
 import type { AppProps } from "next/app";
-import ContainerPage from "./_container";
+import HeaderPage from "./_header";
+import { globalStyles } from "@/styles/global";
+
+globalStyles();
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <ContainerPage />
+      <HeaderPage />
       <Component {...pageProps} />
     </>
   );

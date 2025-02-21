@@ -20,5 +20,12 @@ export const {
       grey700: "#666666",
       grey900: "#333333",
     },
+
+    fontSizes: {
+      fontSize_12x: "0.75rem",
+      fontSize_14x: "0.875rem",
+      fontSize_18x: "1.125rem",
+      fontSize_24x: "1.5rem",
+    },
   },
 });
