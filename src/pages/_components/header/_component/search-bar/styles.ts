@@ -15,6 +15,10 @@ export const Input = styled("input", {
   fontSize: "18px",
   outline: "none",
 
+  "&::placeholder": {
+    color: "$grey500",
+  },
+
   "&:focus": {
     borderColor: "$secondary",
     borderWidth: "1.5px",
