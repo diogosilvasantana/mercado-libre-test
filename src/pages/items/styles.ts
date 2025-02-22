@@ -3,8 +3,15 @@ import { styled } from "@/styles";
 export const Container = styled("div", {
   display: "flex",
   flexDirection: "column",
-  maxWidth: "1200px",
+  maxWidth: "1100px",
+  paddingInline: "3.125rem",
   margin: "0 auto",
+  paddingBottom: "3.25rem",
+
+  a: {
+    textDecoration: "none",
+    color: "inherit",
+  },
 });
 
 export const Divider = styled("div", {
@@ -12,4 +19,9 @@ export const Divider = styled("div", {
   height: "1px",
   marginBlock: "1rem",
   backgroundColor: "$grey300",
+});
+
+export const StyledLink = styled("a", {
+  textDecoration: "none",
+  color: "inherit",
 });

@@ -4,7 +4,8 @@ export const Container = styled("div", {
   display: "flex",
   gap: "2rem",
   width: "100%",
-  maxWidth: "1200px",
+  maxWidth: "1100px",
+  paddingInline: "3.125rem",
   alignItems: "center",
   margin: "0 auto",
 });

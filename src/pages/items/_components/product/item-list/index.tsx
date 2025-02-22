@@ -1,37 +1,46 @@
-import { Description, ItemListContainer, Thumbnail, Location, DescriptionHeader } from "./styles";
+import {
+  Description,
+  ItemListContainer,
+  Thumbnail,
+  Location,
+  DescriptionHeader,
+} from "./styles";
 import { priceFormatter } from "@/utils/formatter";
-import imageTest from "@/assets/image-test-list.jpg";
-import shippingIcon from "@/assets/ic_shipping.png";
 import Image from "next/image";
+import shippingIcon from "@/assets/ic_shipping.png";
+import { ProductItem } from "@/interfaces/product-item";
 
-const ProductItemList = () => {
-  /*
-   * Formata o preço passando o valor da moeda
-   * e quantas casas decimais após a vírgula exibir
-   */
-  const price = priceFormatter("en-US", "USD", 0);
+interface ProductItemListProps {
+  item: ProductItem;
+}
+
+const ProductItemList: React.FC<ProductItemListProps> = ({ item }) => {
+  const fractions = Math.min(20, Math.max(0, item.price.decimals));
+  const price = priceFormatter("en-US", item.price.currency, fractions);
 
   return (
     <ItemListContainer>
       <Thumbnail>
         <Image
-          src={imageTest}
+          src={item.picture}
           width={180}
           height={180}
-          alt="Imagem do produto"
+          alt={`Imagem do produto ${item.title}`}
         />
       </Thumbnail>
 
       <Description>
         <DescriptionHeader>
-          <h2>{price.format(1980)}</h2>
-          <Image src={shippingIcon} alt="Ícone de envio" />
+          <h2>{price.format(item.price.amount)}</h2>
+          {item.free_shipping && (
+            <Image src={shippingIcon} alt="Ícone de envio gratuito" />
+          )}
         </DescriptionHeader>
 
-        <p>Apple Ipod Touch 5g 16gb Negro Igual A Nuevo Completo Unico!</p>
+        <p>{item.title}</p>
       </Description>
 
-      <Location>Capital Federal</Location>
+      <Location>{item.location || "Rosário"}</Location>
     </ItemListContainer>
   );
 };

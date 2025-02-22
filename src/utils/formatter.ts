@@ -1,7 +1,3 @@
-// Método para formatação de datas
-export const dateFormatter = new Intl.DateTimeFormat("pt-BR");
-
-// Método para formatação de moeda
 export const priceFormatter = (
   locale: string = "en-US",
   currency: string = "USD",
@@ -10,5 +6,6 @@ export const priceFormatter = (
   new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    maximumFractionDigits: maximumFractionDigits,
+    // Garantir um número dentro dos limites permitidos para maximumFractionDigits
+    maximumFractionDigits: Math.min(20, Math.max(0, maximumFractionDigits)),
   });
