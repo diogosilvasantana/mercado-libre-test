@@ -1,7 +1,7 @@
 import { styled } from "@/styles";
 
 export const SkeletonBox = styled("div", {
-  backgroundColor: "$skeleton",
+  backgroundColor: "#e0e0e0",
   borderRadius: "4px",
   animation: `shimmer 1.5s infinite linear`,
   "@keyframes shimmer": {
@@ -12,7 +12,7 @@ export const SkeletonBox = styled("div", {
       backgroundPosition: "468px 0",
     },
   },
-  backgroundImage: "$skeletonLinear",
+  backgroundImage: `linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)`,
   backgroundSize: "1000px 104px",
   position: "relative",
   overflow: "hidden",
