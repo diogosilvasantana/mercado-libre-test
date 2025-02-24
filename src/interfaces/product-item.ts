@@ -11,5 +11,5 @@ export interface ProductItem {
   picture: string;
   condition: string;
   free_shipping: boolean;
-  location?: string; // Usando '?' torna essa propriedade opcional
+  location?: string;
 }

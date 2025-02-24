@@ -7,7 +7,7 @@ import {
   SkeletonThumbnail,
 } from "./styles";
 
-const SkeletonProductItemList = () => {
+const SkeletonItemListLoader = () => {
   return (
     <SkeletonContainer>
       <SkeletonThumbnail />
@@ -20,4 +20,4 @@ const SkeletonProductItemList = () => {
   );
 };
 
-export default SkeletonProductItemList;
+export default SkeletonItemListLoader;

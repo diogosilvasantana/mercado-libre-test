@@ -1,14 +1,6 @@
-import axios from "axios";
+import { apiClient } from "@/config/axios";
 
-const apiClient = axios.create({
-  baseURL: "http://localhost:3001",
-  timeout: 5000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-export const fetchItems = async (query: string) => {
+export const getItemsList = async (query: string) => {
   try {
     const response = await apiClient.get(
       `/api/items?q=${encodeURIComponent(query)}`
@@ -20,7 +12,7 @@ export const fetchItems = async (query: string) => {
   }
 };
 
-export const fetchItemDetails = async (id: string) => {
+export const getItemById = async (id: string) => {
   try {
     const response = await apiClient.get(`/api/items/${id}`);
     return response.data;
