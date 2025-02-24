@@ -8,10 +8,10 @@ import {
 } from "./styles";
 import { currencyFormatter } from "@/utils/currencyFormatter";
 import { Button } from "@/components/button";
-import { ProductDetails } from "@/interfaces/product-details";
+import { Item } from "@/interfaces/item-details";
 
 type ProductItemDetailsProps = {
-  item: ProductDetails;
+  item: Item;
 };
 
 const ProductItemDetails: React.FC<ProductItemDetailsProps> = ({ item }) => {

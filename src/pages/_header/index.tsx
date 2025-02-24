@@ -2,8 +2,11 @@ import meLiLogo from "@/assets/Logo_ML.png";
 import Image from "next/image";
 import { Container, Header } from "./styles";
 import SearchBarComponent from "@/components/search-bar";
-import Link from "next/link"; // Importa o componente Link do Next.js
+import Link from "next/link";
 
+/* Esse componente é o header da aplicação. Ela aparece em
+ * todas as páginas, pois está inclusa no arquivo "_app.tsx"
+ */
 const HeaderPage = () => {
   return (
     <Header>

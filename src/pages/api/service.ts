@@ -1,5 +1,6 @@
 import { apiClient } from "@/config/axios";
 
+// Retorna a lista de itens do backend
 export const getItemsList = async (query: string) => {
   try {
     const response = await apiClient.get(
@@ -12,6 +13,7 @@ export const getItemsList = async (query: string) => {
   }
 };
 
+// Retorna o detalhe do item assim que clicado na lista
 export const getItemById = async (id: string) => {
   try {
     const response = await apiClient.get(`/api/items/${id}`);

@@ -1,7 +1,7 @@
 import { Container, Divider } from "./styles";
 import { useRouter } from "next/router";
 import { useItemList } from "@/hooks/useItemList";
-import { ProductItem } from "@/interfaces/product-item";
+import { ItemList } from "@/interfaces/item-list";
 import Breadcrumb from "@/components/breadcrumb";
 import Card from "@/components/card";
 import ErrorComponent from "@/components/error";
@@ -39,7 +39,7 @@ const ItemsPage = () => {
           <div>Nenhum resultado encontrado.</div>
         )}
         {items &&
-          items.items.map((item: ProductItem) => (
+          items.items.map((item: ItemList) => (
             <div key={item.id}>
               <Link href={`/items/${item.id}`} passHref>
                 <ProductItemList item={item} />

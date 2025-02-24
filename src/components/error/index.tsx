@@ -1,5 +1,9 @@
 import { Button } from "../button";
 
+/* Componente genérico para tratar
+ *cenários de erros do servico
+ */
+
 interface ErrorProps {
   error: {
     title: string;

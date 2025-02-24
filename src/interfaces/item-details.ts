@@ -1,4 +1,11 @@
-export interface ProductDetails {
+import { Author } from "./author";
+
+export interface ItemDetails {
+  author: Author;
+  item: Item;
+}
+
+export interface Item {
   id: string;
   title: string;
   price: Price;

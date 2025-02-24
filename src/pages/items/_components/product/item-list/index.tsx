@@ -10,10 +10,10 @@ import {
 import { currencyFormatter } from "@/utils/currencyFormatter";
 import Image from "next/image";
 import shippingIcon from "@/assets/ic_shipping.png";
-import { ProductItem } from "@/interfaces/product-item";
+import { ItemList } from "@/interfaces/item-list";
 
 interface ProductItemListProps {
-  item: ProductItem;
+  item: ItemList;
 }
 
 const ProductItemList: React.FC<ProductItemListProps> = ({ item }) => {

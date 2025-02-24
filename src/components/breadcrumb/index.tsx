@@ -1,9 +1,15 @@
 import React from "react";
-import { BreadcrumbContainer } from "./styles"; // Certifique-se de ter definido os estilos para BreadcrumbContainer
-import { useCategory } from "@/contexts/CategoryContext"; // Importe o useCategory do contexto
+import { BreadcrumbContainer } from "./styles";
+import { useCategory } from "@/hooks/useCategory";
 
+/* Componente responsável por mostrar as
+ * categorias retornadas pelo backend
+ */
 const Breadcrumb = () => {
-  // Pega as categorias a partir do contexto
+  /* Contexto das categorias. Ele tem como finalidade
+   * exibir as categorias. Os dados do Contexto são
+   * setados pelo componente de lista de itens
+   */
   const { categories } = useCategory();
   const lastIndex = categories.length - 1;
 

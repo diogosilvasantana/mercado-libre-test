@@ -5,27 +5,37 @@ import Image from "next/image";
 import searchIcon from "@/assets/ic_Search.png";
 
 const SearchBarComponent = () => {
-  // Utiliza o hook useState para definir o termo de busca, armazenando-o em searchTerm.
+  /* Define o estado 'searchTerm' que armazena
+   * o termo de busca inserido pelo usuário.
+   */
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Hook useRouter de Next.js utilizado para navegação programática entre páginas
+  /* Hook do Next.js para manipular as rotas de acordo.
+   * como que foi preenchido no input, para atender o que
+   * foi solicitado no enunciado do desafio.
+   */
   const router = useRouter();
 
+  /* Verifica se o usuário está na rota principal caso esteja,
+   * vai forçar a limpeza do input, para evitar de ter dados preenchidos
+   * sem ter uma pesquisa realizada.
+   */
   useEffect(() => {
     if (router.pathname === "/") {
       setSearchTerm("");
     }
   }, [router.pathname]);
 
-  /* Método para manipular mudanças no input de busca.
-   * Atualiza o estado searchTerm com o valor atual do input.
+  /* Método de callback para manusear as mudanças no campo de input de busca.
+   * Atualiza o estado 'searchTerm' com o valor atual do campo input.
    */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  /* Método acionado quando o botão de busca é clicado.
-   * Verifica se há um termo de busca válido: se houver, redireciona para a página de resultados.
+  /* Verifica se existe um termo de busca não vazio e, se positivo,
+   * redireciona o usuário para a página de resultados
+   * de busca correspondente.
    */
   const handleSearch = () => {
     if (searchTerm.trim() !== "") {
@@ -33,7 +43,11 @@ const SearchBarComponent = () => {
     }
   };
 
-  // Captura evento de tecla e verifica se foi a tecla Enter
+  /* Método para capturar eventos de teclas no input.
+   * Verifica se a tecla pressionada foi a tecla Enter e chama 'handleSearch'.
+   * Isso permite que a pesquisa possa ser executada com o enter, útil inclusive
+   * para acessibilidade.
+   */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
@@ -48,6 +62,7 @@ const SearchBarComponent = () => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
+
       <SearchButton onClick={handleSearch}>
         <Image src={searchIcon} alt="icone do botão" />
       </SearchButton>
