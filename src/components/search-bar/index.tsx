@@ -1,6 +1,6 @@
 import { InputContainer, Input, SearchButton } from "./styles";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import searchIcon from "@/assets/ic_Search.png";
 
@@ -10,6 +10,12 @@ const SearchBarComponent = () => {
 
   // Hook useRouter de Next.js utilizado para navegação programática entre páginas
   const router = useRouter();
+
+  useEffect(() => {
+    if (router.pathname === "/") {
+      setSearchTerm("");
+    }
+  }, [router.pathname]);
 
   /* Método para manipular mudanças no input de busca.
    * Atualiza o estado searchTerm com o valor atual do input.

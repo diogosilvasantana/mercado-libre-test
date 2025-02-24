@@ -9,14 +9,11 @@ export const ItemDetailContainer = styled("section", {
 });
 
 export const ItemImage = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   position: "relative",
-  width: "680px",
-
-  img: {
-    position: "relative !important",
-    width: "80% !important",
-    height: "100% !important",
-  },
+  maxWidth: "680px",
 });
 
 export const ItemInfoPrice = styled("div", {
@@ -40,7 +37,7 @@ export const PriceDescription = styled("h3", {
 });
 
 export const ItemDescription = styled("div", {
-  marginTop: "2rem",
+  marginTop: "10rem",
   display: "flex",
   flexDirection: "column",
   gap: "2rem",

@@ -4,8 +4,10 @@ import {
   Thumbnail,
   Location,
   DescriptionHeader,
+  DecimalPrice,
+  DescriptionPrice,
 } from "./styles";
-import { priceFormatter } from "@/utils/formatter";
+import { currencyFormatter } from "@/utils/currencyFormatter";
 import Image from "next/image";
 import shippingIcon from "@/assets/ic_shipping.png";
 import { ProductItem } from "@/interfaces/product-item";
@@ -15,8 +17,11 @@ interface ProductItemListProps {
 }
 
 const ProductItemList: React.FC<ProductItemListProps> = ({ item }) => {
-  const fractions = Math.min(20, Math.max(0, item.price.decimals));
-  const price = priceFormatter("en-US", item.price.currency, fractions);
+  const price = currencyFormatter(
+    "es-AR",
+    item.price.currency,
+    item.price.amount
+  );
 
   return (
     <ItemListContainer>
@@ -31,7 +36,12 @@ const ProductItemList: React.FC<ProductItemListProps> = ({ item }) => {
 
       <Description>
         <DescriptionHeader>
-          <h2>{price.format(item.price.amount)}</h2>
+          <DescriptionPrice>
+            <h2>{price.formatted}</h2>
+            {item.price.decimals !== 0 && (
+              <DecimalPrice>{item.price.decimals}</DecimalPrice>
+            )}
+          </DescriptionPrice>
           {item.free_shipping && (
             <Image src={shippingIcon} alt="Ícone de envio gratuito" />
           )}
