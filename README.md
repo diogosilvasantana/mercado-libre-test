@@ -1,6 +1,6 @@
 <h1 align="center">Mercado Libre Test</h1>
 
-Aplicação do case prático Fullstack do teste do Mercado Libre.
+Aplicação do case prático Fullstack do teste do Mercado Livre.
 
 ## Tecnologias
 
