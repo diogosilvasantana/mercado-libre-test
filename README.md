@@ -1,14 +1,8 @@
 <h1 align="center">Mercado Libre Test</h1>
 
----
-
 Aplicação do case prático Fullstack do teste do Mercado Libre.
 
----
-
 ## Tecnologias
-
----
 
 ### Frontend
 
@@ -16,8 +10,6 @@ Aplicação do case prático Fullstack do teste do Mercado Libre.
 - **Stitches**: Biblioteca para estilização de componentes React.
 - **Axios**: Cliente HTTP para requisições ao backend.
 - **Typescript**: Superset do JavaScript que adiciona tipagem estática.
-
----
 
 ### Backend
 
