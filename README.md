@@ -7,7 +7,7 @@ Aplicação do case prático Fullstack do teste do Mercado Libre.
 ### Frontend
 
 - **React** com **Next.js**: Framework JavaScript para construção de interfaces de usuário.
-- **Stitches**: Biblioteca para estilização de componentes React.
+- **Stitches**: Biblioteca para estilização com CSS-in-JS.
 - **Axios**: Cliente HTTP para requisições ao backend.
 - **Typescript**: Superset do JavaScript que adiciona tipagem estática.
 
@@ -30,8 +30,8 @@ Para facilitar a execução e teste dos endpoints do backend, disponibilizamos u
 
 ### Endpoints
 
-- `/api/items/{id}`: Retorna os detalhes de um item específico.
 - `/api/items?q={query}`: Retorna uma lista de itens que correspondem à query de busca.
+- `/api/items/{id}`: Retorna os detalhes do item clicado da lista
 
 ## Como Executar?
 
