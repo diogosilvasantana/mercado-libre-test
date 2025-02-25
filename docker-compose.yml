@@ -1,19 +1,27 @@
-version: "3"
+version: "3.8"
 services:
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend
+      - ./frontend:/app
+      - /app/node_modules
     command: npm run dev
+    depends_on:
+      - backend
+    container_name: meli-frontend
 
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     volumes:
-      - ./backend
+      - ./backend:/app
+      - /app/node_modules
     command: npm run dev
+    container_name: meli-backend
