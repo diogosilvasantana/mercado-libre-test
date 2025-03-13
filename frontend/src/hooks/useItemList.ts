@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { getItemsList } from "@/pages/api/service";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect, useCallback } from "react";
 import { useCategory } from "@/hooks/useCategory";
 import { ItemList } from "@/interfaces/item-list";
+import { getItemsList } from "@/pages/api/service";
 
 /**
  * Hook personalizado para buscar e gerenciar uma lista de itens baseada em uma consulta de busca.
@@ -11,7 +12,8 @@ import { ItemList } from "@/interfaces/item-list";
  * @returns {Object} Um objeto contendo:
  * - items: Um objeto com as categorias e itens recuperados, ou null se não estiver disponível.
  * - loading: Um booleano que indica se os dados estão em processo de carregamento.
- * - error: Mensagem de erro caso ocorra falha na tentativa de recuperar a lista de itens.
+ * - error: Uma string que indica algum erro ocorrido durante a recuperação dos dados, ou null se não houver erro.
+ * - refetch: Uma função que pode ser chamada para buscar os dados novamente.
  */
 export const useItemList = (searchQuery: string) => {
   const [items, setItems] = useState<{
@@ -23,39 +25,29 @@ export const useItemList = (searchQuery: string) => {
   const [error, setError] = useState<string | null>(null);
   const { setCategories } = useCategory();
 
-  useEffect(() => {
-    let isMounted = true;
+    const fetchData = useCallback(async () => {
+    if (!searchQuery) return;
 
-    // Método assíncrono para buscar a lista de itens da API.
-    const fetchItems = async () => {
-      if (!searchQuery) return;
+    setLoading(true);
+    setError(null);
 
-      setLoading(true);
-      setError(null);
-
-      try {
-        const data = await getItemsList(searchQuery);
-        if (isMounted) {
-          setItems(data);
-          setCategories(data.categories);
-        }
-      } catch (err) {
-        if (isMounted) {
-          console.error("Erro ao buscar os dados:", err);
-          setError("Erro ao carregar dados. Tente novamente mais tarde.");
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchItems();
-
-    // Cleanup: Define isMounted como false ao desmontar o componente para prevenir vazamentos de memória.
-    return () => {
-      isMounted = false;
-    };
+    try {
+      const data = await getItemsList(searchQuery);
+      setItems(data);
+      setCategories(data.categories);
+    } catch (err: any) {
+      console.error("Erro ao buscar os dados:", err.message);
+      setError(`Erro ao carregar dados: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   }, [searchQuery, setCategories]);
 
-  return { items, loading, error };
+  useEffect(() => {
+    fetchData();
+
+    return () => {};
+  }, [searchQuery, fetchData]);
+
+  return { items, loading, error, refetch: fetchData };
 };

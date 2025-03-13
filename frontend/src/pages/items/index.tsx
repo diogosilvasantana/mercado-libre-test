@@ -14,7 +14,7 @@ const ItemsPage = () => {
   const router = useRouter();
   const query =
     typeof router.query.search === "string" ? router.query.search : "";
-  const { items, loading, error } = useItemList(query);
+  const { items, loading, error, refetch } = useItemList(query);
 
   // Define o título da página com base na busca
   const pageTitle = query ? `Resultados para "${query}"` : "Procurar Itens";
@@ -22,6 +22,10 @@ const ItemsPage = () => {
   const pageDescription = query
     ? `Exibindo resultados para a busca de "${query}".`
     : "Explore uma variedade de produtos disponíveis no Mercado Libre.";
+
+  const handleRetry = () => {
+    refetch();
+  };
 
   return (
     <>
@@ -45,6 +49,7 @@ const ItemsPage = () => {
                 message: error,
                 labelButton: "Tentar Novamente",
               }}
+              onButtonClick={handleRetry}
             />
           )}
           {loading &&

@@ -2,6 +2,7 @@ import { styled } from "@/styles";
 
 export const ButtonComponent = styled("button", {
   width: "100%",
+  maxWidth: "300px",
   backgroundColor: "$secondary",
   color: "$white",
   border: "none",

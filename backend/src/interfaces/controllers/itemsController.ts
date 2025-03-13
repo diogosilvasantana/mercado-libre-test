@@ -16,10 +16,13 @@ export const getItems = async (req: Request, res: Response) => {
     const query = req.query.q as string;
     const { categories, items } = await fetchItems(query);
     res.json({ author: res.locals.author, categories, items });
-  } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Something went wrong while fetching items!" });
+  } catch (error: any) {
+      return error.response 
+      ? res.status(error.response.status).json({error: error.response.data})
+      : res.status(500).json({ error: {
+        code: "Bad Request",
+        message: "Internal Server Error"
+      } });
   }
 };
 
@@ -35,7 +38,12 @@ export const getItemDetails = async (req: Request, res: Response) => {
     const id = req.params.id;
     const item = await fetchItemDetails(id);
     res.json({ author: res.locals.author, item });
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching item details!" });
-  }
+  } catch (error: any) {
+    return error.response 
+    ? res.status(error.response.status).json({error: error.response.data})
+    : res.status(500).json({ error: {
+      code: "Bad Request",
+      message: "Internal Server Error"
+    } });
+}
 };

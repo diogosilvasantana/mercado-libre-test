@@ -45,8 +45,7 @@ const ItemDetailsPage = () => {
           {loading ? (
             <ItemDetailSkeletonLoader />
           ) : error ? (
-            <ErrorComponent
-              error={{
+            <ErrorComponent error={{
                 title: "Erro ao carregar detalhes",
                 message: error,
                 labelButton: "Tentar Novamente",
