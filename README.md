@@ -1,6 +1,6 @@
 <h1 align="center">Mercado Libre Test</h1>
 
-Aplicação do case prático Fullstack do teste do Mercado Libre.
+Aplicação do case prático Fullstack do teste do Mercado Livre.
 
 ## Tecnologias
 
@@ -114,4 +114,4 @@ Esta opção permite executar a aplicação em containers Docker, garantindo um 
 
 _Desenvolvedor Fullstack_
 
-- **LinkedIn**: [https://www.linkedin.com/in/diogosilvasantana/](https://www.linkedin.com/in/diogosilvasantana/){target="\_blank"}
+- **LinkedIn**: [https://www.linkedin.com/in/diogosilvasantana/](https://www.linkedin.com/in/diogosilvasantana/)
